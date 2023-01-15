@@ -134,16 +134,21 @@ const GlobalStyle = createGlobalStyle`
     /* My styles */
     body {
       height: 100vh;
-      background-color: var(--yellow-light);
+      background-color: var(--light-yellow);
       font-family: 'Roboto', sans-serif;
     }
 
     * {
       box-sizing: border-box;
-      --yellow-light: rgb(244, 247, 167);
+      --light-yellow: rgb(244, 247, 167);
+      --dark-yellow: rgb(130, 110, 4);;
+      --light-gray: #ddddd9;
+      --medium-gray: #bfbcbc;
+      --dark-gray: #6a6a6a;
+      --white: whitesmoke;
     }
 
-    .root {
+    #root {
       height: 100%
     }
 
