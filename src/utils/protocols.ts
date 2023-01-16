@@ -7,4 +7,12 @@ type MessageType = {
 	username: string;
 };
 
-export type { MessageType };
+type User = {
+	username: string;
+	image: string;
+	token: string;
+};
+
+type SetState<Type> = React.Dispatch<React.SetStateAction<Type>>;
+
+export type { MessageType, SetState, User };

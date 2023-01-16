@@ -155,6 +155,10 @@ const GlobalStyle = createGlobalStyle`
     b {
       font-weight: 700;
     }
+
+    u {
+      text-decoration: underline;
+    }
 `;
 
 export default GlobalStyle;

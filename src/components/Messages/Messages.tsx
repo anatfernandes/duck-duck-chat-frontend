@@ -3,24 +3,26 @@ import { toast } from "react-toastify";
 import styled from "styled-components";
 import { getMessages } from "../../services/api";
 import { MessageType } from "../../utils/protocols";
+import { CreateMessage } from "./CreateMessage";
 import { Message } from "./Message";
 
 export function Messages() {
 	const [messages, setMessages] = useState<MessageType[]>([]);
+	const [updateMessages, setUpdateMessages] = useState(false);
 	const currentDate = useRef("");
 
 	useEffect(() => {
 		getMessages()
+			.then((messages) => {
+				if (typeof messages === "object") setMessages(messages);
+			})
 			.catch(({ response }) =>
 				toast(
 					response.data.message ||
 						"Não foi possível carregar as mensagens. Por favor, recarregue a página."
 				)
-			)
-			.then((messages) => {
-				if (typeof messages === "object") setMessages(messages);
-			});
-	}, []);
+			);
+	}, [updateMessages]);
 
 	function dateIsNotCurrent(date: string) {
 		return (
@@ -55,6 +57,8 @@ export function Messages() {
 					</>
 				))}
 			</div>
+
+			<CreateMessage setUpdateMessages={setUpdateMessages} />
 		</Wrapper>
 	);
 }
