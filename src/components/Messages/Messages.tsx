@@ -75,7 +75,8 @@ const Wrapper = styled.section`
 	> div {
 		width: 100%;
 		height: auto;
-		max-height: 85%;
+		max-height: 80%;
+		padding-top: 17px;
 		overflow-y: scroll;
 		overflow-x: hidden;
 	}

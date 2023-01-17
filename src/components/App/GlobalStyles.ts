@@ -141,6 +141,7 @@ const GlobalStyle = createGlobalStyle`
     * {
       box-sizing: border-box;
       --light-yellow: rgb(244, 247, 167);
+      --medium-yellow: rgb(241, 247, 88);
       --dark-yellow: rgb(130, 110, 4);;
       --light-gray: #ddddd9;
       --medium-gray: #bfbcbc;
@@ -158,6 +159,17 @@ const GlobalStyle = createGlobalStyle`
 
     u {
       text-decoration: underline;
+    }
+
+    h1 {
+      font-weight: 500;
+      font-size: 24px;
+		  font-family: "Oswald", sans-serif;
+    }
+
+    h2 {
+      font-weight: 500;
+      font-size: 20px;
     }
 `;
 
