@@ -6,7 +6,11 @@ import { MessageType } from "../../utils/protocols";
 import { CreateMessage } from "./CreateMessage";
 import { Message } from "./Message";
 
-export function Messages() {
+type MessagesParams = {
+	showUsers: boolean;
+};
+
+export function Messages({ showUsers }: MessagesParams) {
 	const [messages, setMessages] = useState<MessageType[]>([]);
 	const [updateMessages, setUpdateMessages] = useState(false);
 	const currentDate = useRef("");
@@ -42,7 +46,12 @@ export function Messages() {
 	}
 
 	return (
-		<Wrapper>
+		<Wrapper
+			style={{
+				height: showUsers ? "auto" : "100%",
+				padding: showUsers ? "0 4px" : "0",
+			}}
+		>
 			<div>
 				{messages.map((message, index) => (
 					<>
@@ -64,7 +73,6 @@ export function Messages() {
 }
 
 const Wrapper = styled.section`
-	height: 100%;
 	width: 97%;
 	margin: 0 auto;
 	overflow: hidden;

@@ -147,6 +147,7 @@ const GlobalStyle = createGlobalStyle`
       --medium-gray: #bfbcbc;
       --dark-gray: #6a6a6a;
       --white: whitesmoke;
+      --black: #121212;
     }
 
     #root {

@@ -1,17 +1,20 @@
+import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GlobalStyle from "./GlobalStyles";
-import { Messages } from "../Messages/Messages";
 import { Header } from "../Header/Header";
+import { Main } from "../Main/Main";
 
 function App() {
+	const [showUsers, setShowUsers] = useState(false);
+
 	return (
 		<>
 			<GlobalStyle />
 			<ToastContainer />
 
-			<Header />
-			<Messages />
+			<Header setShowUsers={setShowUsers} />
+			<Main showUsers={showUsers} />
 		</>
 	);
 }

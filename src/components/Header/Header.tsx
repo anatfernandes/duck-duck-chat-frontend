@@ -3,8 +3,13 @@ import { ImEnter as EnterIcon, ImExit as ExitIcon } from "react-icons/im";
 import { BsPeopleFill as PeapleIcon } from "react-icons/bs";
 import logo from "../../assets/images/logo.png";
 import { getUserData } from "../../utils/getUserData";
+import { SetState } from "../../utils/protocols";
 
-export function Header() {
+type HeaderParams = {
+	setShowUsers: SetState<boolean>;
+};
+
+export function Header({ setShowUsers }: HeaderParams) {
 	const user = getUserData();
 
 	return (
@@ -29,7 +34,7 @@ export function Header() {
 				)}
 			</Reception>
 
-			<Users>
+			<Users onClick={() => setShowUsers((prev) => !prev)}>
 				<PeapleIcon />
 			</Users>
 		</Wrapper>

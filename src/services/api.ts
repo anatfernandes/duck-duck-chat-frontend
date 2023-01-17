@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getUserData } from "../utils/getUserData";
-import { MessageType } from "../utils/protocols";
+import { MessageType, UserType } from "../utils/protocols";
 
 const BASE_URI = process.env.REACT_APP_API_URI;
 
@@ -30,6 +30,11 @@ function postMessage(body: PostMessageParams) {
 	return axios.post(`${BASE_URI}/messages`, body, config);
 }
 
+async function getUsers(): Promise<UserType[]> {
+	const users = await axios.get<UserType[]>(`${BASE_URI}/users`);
+	return users.data;
+}
+
 export type PostMessageParams = { text: string };
 
-export { getMessages, postMessage };
+export { getMessages, postMessage, getUsers };
