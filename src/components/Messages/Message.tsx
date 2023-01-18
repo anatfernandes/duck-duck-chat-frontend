@@ -1,7 +1,10 @@
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { MessageType } from "../../utils/protocols";
 
-type MessageParams = MessageType;
+type MessageParams = MessageType & {
+	isLast: boolean;
+};
 
 export function Message({
 	id,
@@ -10,9 +13,20 @@ export function Message({
 	date,
 	userImage,
 	username,
+	isLast,
 }: MessageParams) {
+	const ref = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		if (ref.current && isLast) {
+			ref.current.scrollIntoView({
+				behavior: "smooth",
+			});
+		}
+	}, [id]);
+
 	return (
-		<Wrapper>
+		<Wrapper ref={ref}>
 			<Container>
 				<Image>
 					<img src={userImage} />

@@ -62,7 +62,11 @@ export function Messages({ showUsers }: MessagesParams) {
 								</MessagesDate>
 							)}
 
-						<Message key={index} {...message} />
+						<Message
+							key={index}
+							{...message}
+							isLast={index === messages.length - 1}
+						/>
 					</>
 				))}
 			</div>
