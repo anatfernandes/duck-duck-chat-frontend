@@ -6,12 +6,10 @@ import { UserType } from "../../utils/protocols";
 
 export function Users() {
 	const [users, setUsers] = useState<UserType[]>([]);
-	console.log(users);
+
 	useEffect(() => {
 		getUsers()
-			.then((users) => {
-				if (typeof users === "object") setUsers(users);
-			})
+			.then((users) => setUsers(users))
 			.catch(({ response }) =>
 				toast(
 					response.data.message ||

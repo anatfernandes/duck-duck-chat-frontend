@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { ImEnter as EnterIcon, ImExit as ExitIcon } from "react-icons/im";
 import { BsPeopleFill as PeapleIcon } from "react-icons/bs";
 import logo from "../../assets/images/logo.png";
@@ -23,13 +24,17 @@ export function Header({ setShowUsers }: HeaderParams) {
 				{user !== null && (
 					<>
 						<h2>Olá, {user.username}!</h2>
-						<ExitIcon />
+						<Link to="sign-out">
+							<ExitIcon />
+						</Link>
 					</>
 				)}
 				{!user && (
 					<>
 						<h2>Olá, Estranho!</h2>
-						<EnterIcon />
+						<Link to="sign-in">
+							<EnterIcon />
+						</Link>
 					</>
 				)}
 			</Reception>

@@ -35,6 +35,13 @@ async function getUsers(): Promise<UserType[]> {
 	return users.data;
 }
 
-export type PostMessageParams = { text: string };
+async function postSingIn(body: PostSingInParams) {
+	const response = await axios.post<PostSingInResponse>(`${BASE_URI}/sign-in`, body);
+	return response.data;
+}
 
-export { getMessages, postMessage, getUsers };
+export type PostMessageParams = { text: string };
+export type PostSingInParams = { email: string; password: string };
+export type PostSingInResponse = Omit<UserType, "id"> & { token: string };
+
+export { getMessages, postMessage, getUsers, postSingIn };

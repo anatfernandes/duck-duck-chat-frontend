@@ -172,6 +172,10 @@ const GlobalStyle = createGlobalStyle`
       font-weight: 500;
       font-size: 20px;
     }
+    
+    a {
+    	text-decoration: none;
+    }
 `;
 
 export default GlobalStyle;
