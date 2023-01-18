@@ -47,6 +47,11 @@ function postSingUp(body: PostSingUpParams) {
 	return axios.post(`${BASE_URI}/sign-up`, body);
 }
 
+function postSingOut() {
+	const config = createHeaders();
+	return axios.post(`${BASE_URI}/sign-out`, {}, config);
+}
+
 export type PostMessageParams = { text: string };
 export type PostSingInParams = { email: string; password: string };
 export type PostSingInResponse = Omit<UserType, "id"> & { token: string };
@@ -55,4 +60,11 @@ export type PostSingUpParams = Omit<UserType, "id"> & {
 	password: string;
 };
 
-export { getMessages, postMessage, getUsers, postSingIn, postSingUp };
+export {
+	getMessages,
+	postMessage,
+	getUsers,
+	postSingIn,
+	postSingUp,
+	postSingOut,
+};

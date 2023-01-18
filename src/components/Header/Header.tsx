@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 import { ImEnter as EnterIcon, ImExit as ExitIcon } from "react-icons/im";
 import { BsPeopleFill as PeapleIcon } from "react-icons/bs";
 import logo from "../../assets/images/logo.png";
 import { getUserData } from "../../utils/getUserData";
 import { SetState } from "../../utils/protocols";
+import { postSingOut } from "../../services/api";
 
 type HeaderParams = {
 	setShowUsers: SetState<boolean>;
@@ -12,6 +14,23 @@ type HeaderParams = {
 
 export function Header({ setShowUsers }: HeaderParams) {
 	const user = getUserData();
+	const navigate = useNavigate();
+
+	function SignOut() {
+		if (!user?.token) {
+			navigate("/sign-in");
+		}
+
+		postSingOut()
+			.then(() => navigate("/sign-in"))
+			.catch(({ response }) =>
+				toast(
+					response.data.message ||
+						response.data ||
+						"Não foi possível fazer logout. Por favor, tente novamente."
+				)
+			);
+	}
 
 	return (
 		<Wrapper>
@@ -24,9 +43,7 @@ export function Header({ setShowUsers }: HeaderParams) {
 				{user !== null && (
 					<>
 						<h2>Olá, {user.username}!</h2>
-						<Link to="sign-out">
-							<ExitIcon />
-						</Link>
+						<ExitIcon onClick={SignOut} />
 					</>
 				)}
 				{!user && (
