@@ -57,6 +57,10 @@ const Wrapper = styled.section`
 	box-shadow: 1px 0 7px 4px rgba(0, 0, 0, 0.1);
 	background-color: var(--medium-yellow);
 
+	a {
+		color: var(--black);
+	}
+
 	svg {
 		height: 25px;
 		width: auto;

@@ -6,6 +6,7 @@ import { Header } from "../Header/Header";
 import { Main } from "../Main/Main";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignIn from "../Sign/SignIn";
+import SignUp from "../Sign/SignUp";
 
 function App() {
 	const [showUsers, setShowUsers] = useState(false);
@@ -17,6 +18,7 @@ function App() {
 
 			<Routes>
 				<Route path="/sign-in" element={<SignIn />} />
+				<Route path="/sign-up" element={<SignUp />} />
 
 				<Route
 					path="/"
