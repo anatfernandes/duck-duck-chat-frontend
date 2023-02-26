@@ -1,46 +1,63 @@
-# Getting Started with Create React App
+# :duck: Duck, Duck, Chat
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=success&style=for-the-badge)
 
-## Available Scripts
+Página web que simula um chat.
+<br />
+Esse projeto é uma POC que tem o intuito de centralizar algumas tecnologias e padrões que gostaria de testar.
 
-In the project directory, you can run:
+<div align=center>
+ 
+  ![Duck, Duck, Chat preview](https://user-images.githubusercontent.com/97851922/221430450-dbb9ef71-bd44-4581-b602-8fc485b9145e.png)
+  
+</div>
 
-### `npm start`
+<br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## :hammer: Funcionalidades
+- Cadastro
+- Login
+- Logout
+- Listagem de mensagens
+- Postar/Editar/Apagar mensagem
+- Listagem de usuários
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<br />
 
-### `npm test`
+## :hammer_and_wrench: Abrir e rodar o projeto
+1. Clone esse repositório:
+>```bash
+> git clone https://github.com/AnaLTFernandes/duck-duck-chat-frontend.git
+>```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Na raiz do projeto, instale as dependências:
+>```bash
+> npm install
+>```
 
-### `npm run build`
+3. Instale e configure o [Backend](https://github.com/AnaLTFernandes/duck-duck-chat-backend)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Crie e configure o arquivo `.env` usando como base o arquivo `.env.example`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. Inicie o projeto:
+>```bash
+> npm start
+>```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+6. Acesse http://localhost:3000 no seu navegador e aproveite <3
 
-### `npm run eject`
+<br />
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## :heavy_check_mark: Tecnologias utilizadas
+<img align="left" alt="axios" height="25px" src="https://img.shields.io/badge/-axios-success" />
+<img align="left" alt="typescript" height="25px" src="https://img.shields.io/badge/-Typescript-2F74C0?logo=typescript&logoColor=white" />
+<img align="left" alt="react" height="25px" src="https://img.shields.io/badge/-React-5ED3F3?logo=react&logoColor=white" />
+<img align="left" alt="react-router-dom" height="25px" src="https://img.shields.io/badge/React-Router-5ED3F3" />
+<img align="left" alt="react-icons" height="25px" src="https://img.shields.io/badge/React-Icons-5ED3F3" />
+<img align="left" alt="styled-components" height="25px" src="https://img.shields.io/badge/styled-components-violet?logo=styled-components" />
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br />
+<br />
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
