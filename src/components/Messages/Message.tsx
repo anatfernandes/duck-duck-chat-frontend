@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
 import styled from "styled-components";
+import { useEffect, useRef } from "react";
 import { MessageType } from "../../utils/protocols";
 
 type MessageParams = MessageType & {
@@ -20,7 +20,7 @@ export function Message({
 	useEffect(() => {
 		if (ref.current && isLast) {
 			ref.current.scrollIntoView({
-				behavior: "smooth",
+				behavior: "auto",
 			});
 		}
 	}, [id]);

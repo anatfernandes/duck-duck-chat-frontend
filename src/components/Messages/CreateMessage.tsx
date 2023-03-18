@@ -1,16 +1,24 @@
 import styled from "styled-components";
-import { IoIosSend as SendIcon } from "react-icons/io";
 import { useState } from "react";
+import { IoIosSend as SendIcon } from "react-icons/io";
 import { SetState } from "../../utils/protocols";
-import { postMessage } from "../../services/api";
 import { toast } from "react-toastify";
+import { postMessage } from "../../services/api";
 import { getUserData } from "../../utils/getUserData";
 
 type CreateMessageParams = {
 	setUpdateMessages: SetState<boolean>;
+	showUsers: boolean;
 };
 
-export function CreateMessage({ setUpdateMessages }: CreateMessageParams) {
+type WrapperProps = {
+	showUsers: boolean;
+};
+
+export function CreateMessage({
+	setUpdateMessages,
+	showUsers,
+}: CreateMessageParams) {
 	const [message, setMessage] = useState({ text: "" });
 	const user = getUserData();
 
@@ -31,8 +39,12 @@ export function CreateMessage({ setUpdateMessages }: CreateMessageParams) {
 	}
 
 	return (
-		<Wrapper onSubmit={sendMessage}>
-			{!user && <span>Faça <u>login</u> para mandar uma mensagem :)</span>}
+		<Wrapper onSubmit={sendMessage} showUsers={showUsers}>
+			{!user && (
+				<span>
+					Faça <u>login</u> para mandar uma mensagem :)
+				</span>
+			)}
 
 			{user && (
 				<>
@@ -52,15 +64,21 @@ export function CreateMessage({ setUpdateMessages }: CreateMessageParams) {
 	);
 }
 
-const Wrapper = styled.form`
+const Wrapper = styled.form<WrapperProps>`
 	width: 100%;
-	margin: 10px 0;
+	padding: 10px 0;
 	display: flex;
 	justify-content: center;
 	position: relative;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--light-yellow);
+	padding-left: ${(props) => (props.showUsers ? "350px" : "0")};
 
 	textarea {
-		width: 100%;
+		width: 95%;
 		height: 33px;
 		resize: none;
 		outline: none;
@@ -82,7 +100,7 @@ const Wrapper = styled.form`
 		border: none;
 		background-color: transparent;
 		position: absolute;
-		right: 2px;
+		right: 3%;
 		top: 1px;
 		cursor: pointer;
 	}
@@ -92,7 +110,7 @@ const Wrapper = styled.form`
 		color: var(--dark-yellow);
 	}
 
-    > span {
-        margin: 10px 0; 
-    }
+	> span {
+		margin: 10px 0;
+	}
 `;

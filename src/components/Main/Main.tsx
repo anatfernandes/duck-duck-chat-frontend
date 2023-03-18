@@ -8,18 +8,15 @@ type MainParams = {
 
 export function Main({ showUsers }: MainParams) {
 	return (
-		<>
-			{showUsers && (
-				<Wrapper>
-					<Messages showUsers={showUsers}/>
-					<Users />
-				</Wrapper>
-			)}
-			{!showUsers && <Messages showUsers={showUsers}/>}
-		</>
+		<Wrapper showUsers={showUsers}>
+			<Messages showUsers={showUsers} />
+			{showUsers && <Users />}
+		</Wrapper>
 	);
 }
 
-const Wrapper = styled.section`
+const Wrapper = styled.main<MainParams>`
 	display: flex;
+	padding: 80px 0 70px;
+	padding-left: ${(props) => (props.showUsers ? "345px" : "0")};
 `;

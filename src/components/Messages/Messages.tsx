@@ -1,6 +1,6 @@
+import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-import styled from "styled-components";
 import { getMessages } from "../../services/api";
 import { MessageType } from "../../utils/protocols";
 import { CreateMessage } from "./CreateMessage";
@@ -18,7 +18,7 @@ export function Messages({ showUsers }: MessagesParams) {
 	useEffect(() => {
 		getMessages()
 			.then((messages) => {
-				if (typeof messages === "object") setMessages(messages);
+				if (typeof messages === "object") setMessages([...messages]);
 			})
 			.catch(({ response }) =>
 				toast(
@@ -46,12 +46,7 @@ export function Messages({ showUsers }: MessagesParams) {
 	}
 
 	return (
-		<Wrapper
-			style={{
-				height: showUsers ? "auto" : "100%",
-				padding: showUsers ? "0 4px" : "0",
-			}}
-		>
+		<Wrapper>
 			<div>
 				{messages.map((message, index) => (
 					<>
@@ -71,13 +66,19 @@ export function Messages({ showUsers }: MessagesParams) {
 				))}
 			</div>
 
-			<CreateMessage setUpdateMessages={setUpdateMessages} />
+			<CreateMessage
+				setUpdateMessages={setUpdateMessages}
+				showUsers={showUsers}
+			/>
 		</Wrapper>
 	);
 }
 
 const Wrapper = styled.section`
 	width: 97%;
+	height: calc(100vh - (80px + 70px));
+	height: -moz-calc(100vh - (80px + 70px));
+	height: -webkit-calc(100vh - (80px + 70px));
 	margin: 0 auto;
 	overflow: hidden;
 	display: flex;
@@ -87,9 +88,7 @@ const Wrapper = styled.section`
 	> div {
 		width: 100%;
 		height: auto;
-		max-height: 80%;
 		padding-top: 17px;
-		overflow-y: scroll;
 		overflow-x: hidden;
 	}
 `;

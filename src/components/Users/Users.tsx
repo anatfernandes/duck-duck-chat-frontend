@@ -35,12 +35,17 @@ export function Users() {
 
 const Wrapper = styled.section`
 	width: 340px;
-	height: 100vh;
-	padding: 80px 0 0;
+	height: calc(100vh - 70px);
+	height: -moz-calc(100vh - 70px);
+	height: -webkit-calc(100vh - 70px);
+	padding: 10px 0 0;
 	display: flex;
 	flex-direction: column;
-	overflow-y: scroll;
 	overflow-x: hidden;
+	position: fixed;
+	left: 0;
+	top: 70px;
+	z-index: 1;
 	background-color: var(--medium-gray);
 
 	> h2 {
