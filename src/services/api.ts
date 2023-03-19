@@ -5,66 +5,74 @@ import { MessageType, UserType } from "../utils/protocols";
 const BASE_URI = process.env.REACT_APP_API_URI;
 
 function createHeaders() {
-	const data = getUserData();
+  const data = getUserData();
 
-	if (!data) return {};
+  if (!data) return {};
 
-	const token = data.token;
+  const token = data.token;
 
-	const config = {
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	};
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
-	return config;
+  return config;
 }
 
 async function getMessages(): Promise<MessageType[]> {
-	const messages = await axios.get<MessageType[]>(`${BASE_URI}/messages`);
-	return messages.data;
+  const messages = await axios.get<MessageType[]>(`${BASE_URI}/messages`);
+  return messages.data;
+}
+
+async function getMessagesByUser(userId: number): Promise<MessageType[]> {
+  const messages = await axios.get<MessageType[]>(
+    `${BASE_URI}/messages/${userId}`
+  );
+  return messages.data;
 }
 
 function postMessage(body: PostMessageParams) {
-	const config = createHeaders();
-	return axios.post(`${BASE_URI}/messages`, body, config);
+  const config = createHeaders();
+  return axios.post(`${BASE_URI}/messages`, body, config);
 }
 
 async function getUsers(): Promise<UserType[]> {
-	const users = await axios.get<UserType[]>(`${BASE_URI}/users`);
-	return users.data;
+  const users = await axios.get<UserType[]>(`${BASE_URI}/users`);
+  return users.data;
 }
 
 async function postSingIn(body: PostSingInParams) {
-	const response = await axios.post<PostSingInResponse>(
-		`${BASE_URI}/sign-in`,
-		body
-	);
-	return response.data;
+  const response = await axios.post<PostSingInResponse>(
+    `${BASE_URI}/sign-in`,
+    body
+  );
+  return response.data;
 }
 
 function postSingUp(body: PostSingUpParams) {
-	return axios.post(`${BASE_URI}/sign-up`, body);
+  return axios.post(`${BASE_URI}/sign-up`, body);
 }
 
 function postSingOut() {
-	const config = createHeaders();
-	return axios.post(`${BASE_URI}/sign-out`, {}, config);
+  const config = createHeaders();
+  return axios.post(`${BASE_URI}/sign-out`, {}, config);
 }
 
 export type PostMessageParams = { text: string };
 export type PostSingInParams = { email: string; password: string };
 export type PostSingInResponse = Omit<UserType, "id"> & { token: string };
 export type PostSingUpParams = Omit<UserType, "id"> & {
-	email: string;
-	password: string;
+  email: string;
+  password: string;
 };
 
 export {
-	getMessages,
-	postMessage,
-	getUsers,
-	postSingIn,
-	postSingUp,
-	postSingOut,
+  getMessages,
+  getMessagesByUser,
+  getUsers,
+  postMessage,
+  postSingIn,
+  postSingUp,
+  postSingOut,
 };
