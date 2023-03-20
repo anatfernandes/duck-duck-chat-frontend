@@ -59,6 +59,11 @@ function postSingOut() {
   return axios.post(`${BASE_URI}/sign-out`, {}, config);
 }
 
+function deleteMessage(messageId: number) {
+  const config = createHeaders();
+  return axios.delete(`${BASE_URI}/messages/${messageId}`, config);
+}
+
 export type PostMessageParams = { text: string };
 export type PostSingInParams = { email: string; password: string };
 export type PostSingInResponse = Omit<UserType, "id"> & { token: string };
@@ -75,4 +80,5 @@ export {
   postSingIn,
   postSingUp,
   postSingOut,
+  deleteMessage,
 };

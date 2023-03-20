@@ -19,11 +19,9 @@ export function Messages({ showUsers }: MessagesParams) {
 
   useEffect(() => {
     const filterByUser = state?.user && Number(state.user);
-    const apiFunction = filterByUser
-      ? getMessagesByUser
-      : getMessages;
+    const apiFunction = filterByUser ? getMessagesByUser : getMessages;
 
-    apiFunction(null || (Number(state?.user)))
+    apiFunction(null || Number(state?.user))
       .catch(({ response }) =>
         toast(
           response.data.message ||
@@ -68,6 +66,7 @@ export function Messages({ showUsers }: MessagesParams) {
               key={index}
               {...message}
               isLast={index === messages.length - 1}
+              setUpdateMessages={setUpdateMessages}
             />
           </>
         ))}
